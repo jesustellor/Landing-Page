@@ -22,7 +22,8 @@
  * Define Global Variables
  * 
 */
-
+const sectionList = document.querySelectorAll(".landing__container");
+const ul = document.createElement('ul');
 
 /**
  * End Global Variables
@@ -30,6 +31,18 @@
  * 
 */
 
+for (let i = 0; i < sectionList.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = sectionList[i].dataset.nav;
+    // const a = document.createElement("a");
+    // a.href = `#${sectionList[i].id}`;
+    // a.textContent = sectionList[i].dataset.nav;
+    // li.appendChild(a);
+    // a.classList.add("menu__link");
+    ul.appendChild(li);
+}
+
+document.querySelector("#navbar__list").appendChild(ul);
 
 /**
  * End Helper Functions
@@ -38,7 +51,7 @@
 */
 
 // build the nav
-const nav = document.createElement('nav');
+
 
 
 // Add class 'active' to section when near top of viewport
