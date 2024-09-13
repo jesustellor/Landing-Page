@@ -22,9 +22,9 @@
  * Define Global Variables
  * 
 */
-const sectionList = document.querySelectorAll(".landing__container");
-const ul = document.createElement('ul');
-
+const sectionList = document.querySelectorAll("div.landing__container");
+const ul = document.querySelector('#navbar__list');
+const fragment = document.createDocumentFragment();
 /**
  * End Global Variables
  * Start Helper Functions
@@ -32,17 +32,18 @@ const ul = document.createElement('ul');
 */
 
 for (let i = 0; i < sectionList.length; i++) {
+    const a = document.createElement("a");
+    a.href = `#${sectionList[i].parentElement.id}`;
     const li = document.createElement("li");
-    li.textContent = sectionList[i].dataset.nav;
-    // const a = document.createElement("a");
-    // a.href = `#${sectionList[i].id}`;
-    // a.textContent = sectionList[i].dataset.nav;
-    // li.appendChild(a);
-    // a.classList.add("menu__link");
-    ul.appendChild(li);
+    li.textContent = sectionList[i].querySelector("h2").textContent;
+    a.appendChild(li);
+    fragment.appendChild(a);
 }
 
-document.querySelector("#navbar__list").appendChild(ul);
+ul.style.cssText = "display: flex; justify-content: space-evenly;";
+
+ul.appendChild(fragment);
+
 
 /**
  * End Helper Functions
