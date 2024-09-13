@@ -63,12 +63,12 @@ function makeActive(){
         if (box.top <= VALUE && box.bottom >= VALUE) {
             section.parentElement.classList.add("your-active-class");
             section.classList.add("active");
-            link.classList.add("active");
+            link.classList.add("navbar__menu");
         //apply active state on current section and corresponding Nav link
         } else {
             section.parentElement.removeAttribute("class");
             section.removeAttribute("class");
-            link.classList.remove("active");
+            link.classList.remove("navbar__menu");
         //Remove active state from other section and corresponding Nav link
         }
      }
