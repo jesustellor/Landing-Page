@@ -42,7 +42,7 @@ for (let i = 0; i < sectionLength; i++) {
     fragment.appendChild(a);
 }
 
-ul.style.cssText = "display: flex; justify-content: space-evenly;";
+ul.style.cssText = "display: flex; justify-content: space-evenly; align-items: center;";
 
 ul.appendChild(fragment);
 
@@ -54,21 +54,19 @@ ul.appendChild(fragment);
 */
 
 function makeActive(){
-    const VALUE = 150;
+    const VALUE = 155;    
     for (const section of sectionList) {
-        const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
-
         const box = section.getBoundingClientRect();
         //Find a value that works best, but 150 seems to be a good start.
         if (box.top <= VALUE && box.bottom >= VALUE) {
             section.parentElement.classList.add("your-active-class");
-            section.classList.add("active");
-            link.classList.add("navbar__menu");
+            const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
+            link.style.cssText = "background: #333; color: #fff; transition: ease 0.3s all;";
         //apply active state on current section and corresponding Nav link
         } else {
             section.parentElement.removeAttribute("class");
-            section.removeAttribute("class");
-            link.classList.remove("navbar__menu");
+            const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
+            link.removeAttribute("style");
         //Remove active state from other section and corresponding Nav link
         }
      }
