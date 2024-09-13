@@ -10,3 +10,5 @@ The project requirements were to:
 4. The section that is currently being viewed should have its corresponding link in the navbar highlighted.
 
 I was given a basic HTML structure and a CSS file with some basic styles to get started. I wrote the necessary JavaScript code to fulfill the requirements.
+
+*****NOTE:*** you can run the project by running the index.html file in the browser.
