@@ -56,18 +56,18 @@ ul.appendChild(fragment);
 function makeActive(){
     const VALUE = 150;
     for (const section of sectionList) {
+        const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
+
         const box = section.getBoundingClientRect();
         //Find a value that works best, but 150 seems to be a good start.
         if (box.top <= VALUE && box.bottom >= VALUE) {
-            section.parentElement.classList.add("active");
+            section.parentElement.classList.add("your-active-class");
             section.classList.add("active");
-            const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
             link.classList.add("active");
         //apply active state on current section and corresponding Nav link
         } else {
-            section.parentElement.classList.remove("active");
-            section.classList.remove("active");
-            const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
+            section.parentElement.removeAttribute("class");
+            section.removeAttribute("class");
             link.classList.remove("active");
         //Remove active state from other section and corresponding Nav link
         }
