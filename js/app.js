@@ -38,6 +38,7 @@ for (let i = 0; i < sectionLength; i++) {
     const li = document.createElement("li");
     li.textContent = sectionList[i].querySelector("h2").textContent;
     a.appendChild(li);
+    a.classList.add("menu__link");
     fragment.appendChild(a);
 }
 
