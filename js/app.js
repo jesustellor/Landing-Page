@@ -87,9 +87,10 @@ ul.addEventListener("click", (event) => {
         event.preventDefault();
         const section = document.querySelector(event.target.parentElement.getAttribute("href"));
         section.scrollIntoView({behavior: "smooth"});
-        makeActive();
     }
 });
+
+window.addEventListener("scroll", makeActive);
 
 /**
  * End Main Functions
