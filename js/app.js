@@ -25,13 +25,14 @@
 const sectionList = document.querySelectorAll("div.landing__container");
 const ul = document.querySelector('#navbar__list');
 const fragment = document.createDocumentFragment();
+const sectionLength = sectionList.length;
 /**
  * End Global Variables
  * Start Helper Functions
  * 
 */
 
-for (let i = 0; i < sectionList.length; i++) {
+for (let i = 0; i < sectionLength; i++) {
     const a = document.createElement("a");
     a.href = `#${sectionList[i].parentElement.id}`;
     const li = document.createElement("li");
@@ -51,6 +52,27 @@ ul.appendChild(fragment);
  * 
 */
 
+function makeActive(){
+    const VALUE = 150;
+    for (const section of sectionList) {
+        const box = section.getBoundingClientRect();
+        //Find a value that works best, but 150 seems to be a good start.
+        if (box.top <= VALUE && box.bottom >= VALUE) {
+            section.parentElement.classList.add("active");
+            section.classList.add("active");
+            const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
+            link.classList.add("active");
+        //apply active state on current section and corresponding Nav link
+        } else {
+            section.parentElement.classList.remove("active");
+            section.classList.remove("active");
+            const link = document.querySelector(`a[href="#${section.parentElement.id}"]`);
+            link.classList.remove("active");
+        //Remove active state from other section and corresponding Nav link
+        }
+     }
+}
+
 // build the nav
 
 
@@ -60,6 +82,14 @@ ul.appendChild(fragment);
 
 // Scroll to anchor ID using scrollTO event
 
+ul.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        event.preventDefault();
+        const section = document.querySelector(event.target.parentElement.getAttribute("href"));
+        section.scrollIntoView({behavior: "smooth"});
+        makeActive();
+    }
+});
 
 /**
  * End Main Functions
